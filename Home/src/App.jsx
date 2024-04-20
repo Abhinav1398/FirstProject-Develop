@@ -7,7 +7,7 @@ import "./index.css";
 const App = () => (
   <div className="container">
     {/* <Header /> */}
-    <div>Name: Home</div>
+    <div>Name: Hommme</div>
     <div>Framework: react</div>
     <div>Language: JavaScript</div>
     <div>CSS: Empty CSS</div>
