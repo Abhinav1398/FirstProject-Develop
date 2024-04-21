@@ -1,0 +1,28 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  .homeContainer {
+    font-size: 3rem;
+    margin: auto;
+    display: flex;
+    flex-flow: wrap;
+    max-width: 800px;
+    margin-top: 20px;
+  }
+
+  .productContainer{
+      display: grid;
+      height: auto;
+      width: auto;
+    margin: 20px;
+  }
+  .imageStyle{
+      height: 120px;
+      width: 120px;
+  }
+  .textStyle{
+      width: 100px;
+      font-size: 20px;
+      text-align: center;
+  }

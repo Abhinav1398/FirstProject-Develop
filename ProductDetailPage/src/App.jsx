@@ -1,16 +1,23 @@
-import React from "react";
+import React, {Suspense} from "react";
 import ReactDOM from "react-dom";
-import { Header } from "./Header";
+import { Footer } from "Home/Footer";
+import getProductById from "Home/api/products";
+import {SafeComponent} from "./SafeComponent";
+import { PDPContent } from "./PDPContent";
+// const Header = React.lazy(()=>import('Home/Header'));
+import { Header } from "Home/Header";
 
 import "./index.scss";
 
 const App = () => (
-  <div className="mt-10 text-3xl mx-auto max-w-6xl">
-    <Header />
-    <div>Name: ProductDetailPage</div>
-    <div>Framework: react</div>
-    <div>Language: JavaScript</div>
-    <div>CSS: Tailwind</div>
+  <div className="container">
+    {/* <Suspense fallback={<div>Loadinggg...</div>}> */}
+    <SafeComponent>
+    <Header app='PRODUCT DETAIL PAGE'/>
+    <PDPContent />
+    </SafeComponent>
+    {/* </Suspense> */}
+    <Footer /> 
   </div>
 );
 ReactDOM.render(<App />, document.getElementById("app"));

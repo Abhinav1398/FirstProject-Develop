@@ -2,6 +2,7 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 const Dotenv = require('dotenv-webpack');
 const deps = require("./package.json").dependencies;
+const path = require('path');
 module.exports = (_, argv) => ({
   output: {
     publicPath: "http://localhost:4001/",
@@ -26,9 +27,20 @@ module.exports = (_, argv) => ({
         },
       },
       {
-        test: /\.(css|s[ac]ss)$/i,
-        use: ["style-loader", "css-loader", "postcss-loader"],
+        test: /\.scss$/,
+        use: [
+          'style-loader', // Adds CSS to the DOM by injecting a <style> tag
+          'css-loader',   // Interprets @import and url() like import/require() and will resolve them
+          'postcss-loader', // Process CSS with PostCSS (optional, if you use it for autoprefixer etc.)
+          'sass-loader'   // Loads a SASS/SCSS file and compiles it to CSS
+        ],
+        include: path.resolve(__dirname, 'src'),
       },
+      //For CSS
+      // {
+      //   test: /\.(css|s[ac]ss)$/i,
+      //   use: ["style-loader", "css-loader", "postcss-loader"],
+      // },
       {
         test: /\.(ts|tsx|js|jsx)$/,
         exclude: /node_modules/,
@@ -43,7 +55,9 @@ module.exports = (_, argv) => ({
     new ModuleFederationPlugin({
       name: "ProductDetailPage",
       filename: "remoteEntry.js",
-      remotes: {},
+      remotes: {
+        'Home': "Home@http://localhost:4000/remoteEntry.js",
+      },
       exposes: {},
       shared: {
         ...deps,
