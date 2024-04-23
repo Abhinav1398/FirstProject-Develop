@@ -1,0 +1,22 @@
+.productContainer{
+  display: flex;
+}
+
+.PDPContentcontainer{
+  display: grid;
+}
+
+  .imageStyle{
+      height: 120px;
+      width: 120px;
+  }
+  .textStyle{
+      width: 100px;
+      font-size: 20px;
+      text-align: center;
+  }
+
+  .description{
+    font-size: large;
+    align-items: center;
+  }
